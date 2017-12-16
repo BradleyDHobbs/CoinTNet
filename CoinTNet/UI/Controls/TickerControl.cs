@@ -63,6 +63,15 @@ namespace CoinTNet.UI.Controls
                         _lastPrice = 0;
                     }
                     _24High = _24Low = null;
+
+                    // If the exchange uses websocket feed, refresh it with new pair
+                    if (m.Pair.Exchange.UsesWebSocket)
+                    {
+                        ExchangeProxyFactory.GetProxy(_selectedPair.Exchange.InternalCode).CloseCurrentWebsocket();
+                        ExchangeProxyFactory.GetProxy(_selectedPair.Exchange.InternalCode).GetWebSocketTicker(_selectedPair);
+                    }
+                        
+
                     //If Cryptsy, we cache the last 24 hour high/low
                     if (m.Pair.Exchange.InternalCode == ExchangesInternalCodes.Cryptsy)
                     {
@@ -93,7 +102,7 @@ namespace CoinTNet.UI.Controls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void tmrTicker_Tick(object sender, EventArgs e)
+        private async void tmrTicker_Tick(object sender, EventArgs e)
         {
             var diff = (DateTime.Now - _lastUpdateDttm);
             lblLastUpdate.Text = string.Format("{0:0} seconds ago", diff.TotalSeconds);

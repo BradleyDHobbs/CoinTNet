@@ -2,6 +2,7 @@
 using CoinTNet.DO;
 using CoinTNet.DO.Exchanges;
 using System;
+using System.Threading.Tasks;
 
 namespace CoinTNet.DAL.Exchanges
 {
@@ -123,6 +124,16 @@ namespace CoinTNet.DAL.Exchanges
         public string GetFeeUnit(CurrencyPair pair, OrderType type)
         {
             return type == OrderType.Buy ? pair.Item1 : pair.Item2;
+        }
+
+        public async Task GetWebSocketTicker(CurrencyPair pair)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CloseCurrentWebsocket()
+        {
+            throw new NotImplementedException();
         }
     }
 }

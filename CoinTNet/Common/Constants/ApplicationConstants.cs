@@ -42,5 +42,9 @@ namespace CoinTNet.Common.Constants
         /// Key for Cryptsy's API keys
         /// </summary>
         public const string CryptsyAPI = "cryptsyAPI";
+        /// <summary>
+        /// Key for GDAX's API keys
+        /// </summary>
+        public const string GdaxAPI = "gdaxAPI";
     }
 }

@@ -136,6 +136,10 @@ namespace CoinTNet.UI.Controls
         /// </summary>
         private void InitExchanges()
         {
+            var gdaxEx = new Exchange("Gdax", ExchangesInternalCodes.Gdax, "coinbase");
+            gdaxEx.FeeDeductedFromTotal = true;
+            gdaxEx.UsesWebSocket = true;
+
             var bitstampEx = new Exchange("Bitstamp", ExchangesInternalCodes.Bitstamp);
             bitstampEx.FeeDeductedFromTotal = false;
 
@@ -145,8 +149,8 @@ namespace CoinTNet.UI.Controls
             var cryptsyEx = new Exchange("Cryptsy", ExchangesInternalCodes.Cryptsy);
             cryptsyEx.BitcoinChartsCode = string.Empty;
 
-            var allExchanges = new[] { bitstampEx, btceEx, cryptsyEx };
-            cbbExchange.PopulateCbbFromList(allExchanges, e => e.Name, bitstampEx);
+            var allExchanges = new[] { gdaxEx, bitstampEx, btceEx, cryptsyEx };
+            cbbExchange.PopulateCbbFromList(allExchanges, e => e.Name, gdaxEx);
         }
 
         /// <summary>
@@ -167,7 +171,7 @@ namespace CoinTNet.UI.Controls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void cbbExchange_SelectedIndexChanged(object sender, EventArgs e)
+        private async void cbbExchange_SelectedIndexChanged(object sender, EventArgs e)
         {
             var ex = cbbExchange.GetSelectedValue<Exchange>();
             _loadingPairs = true;
@@ -186,8 +190,14 @@ namespace CoinTNet.UI.Controls
                     return;
                 }
             }
+
             cbbPairs.PopulateCbbFromList(ex.CurrencyPairs, cp => cp.Description, ex.CurrencyPairs.FirstOrDefault());
             _loadingPairs = false;
+
+            var proxy = ExchangeProxyFactory.GetProxy(ex.InternalCode);
+            if (ex.UsesWebSocket)
+                await proxy.GetWebSocketTicker(ex.CurrencyPairs.FirstOrDefault());
+            
             EventAggregator.Instance.Publish(new ExchangeSelected { InternalCode = ex.InternalCode, SelectorType = this.SelectorType });
             cbbPairs_SelectedIndexChanged(cbbPairs, EventArgs.Empty);
         }

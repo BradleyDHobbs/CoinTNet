@@ -31,9 +31,12 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            Telerik.WinControls.UI.CartesianArea cartesianArea1 = new Telerik.WinControls.UI.CartesianArea();
             this.chartCtrl = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.lblInfo = new System.Windows.Forms.Label();
+            this.radChartView1 = new Telerik.WinControls.UI.RadChartView();
             ((System.ComponentModel.ISupportInitialize)(this.chartCtrl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radChartView1)).BeginInit();
             this.SuspendLayout();
             // 
             // chartCtrl
@@ -125,14 +128,26 @@
             this.lblInfo.TabIndex = 10;
             this.lblInfo.Text = "label1";
             // 
+            // radChartView1
+            // 
+            this.radChartView1.AreaDesign = cartesianArea1;
+            this.radChartView1.Location = new System.Drawing.Point(248, 13);
+            this.radChartView1.Name = "radChartView1";
+            this.radChartView1.ShowGrid = false;
+            this.radChartView1.Size = new System.Drawing.Size(480, 320);
+            this.radChartView1.TabIndex = 11;
+            this.radChartView1.Text = "radChartView1";
+            // 
             // MyChartControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.Controls.Add(this.radChartView1);
             this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.chartCtrl);
             this.Name = "MyChartControl";
             this.Size = new System.Drawing.Size(953, 305);
             ((System.ComponentModel.ISupportInitialize)(this.chartCtrl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radChartView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,5 +157,6 @@
 
         private System.Windows.Forms.DataVisualization.Charting.Chart chartCtrl;
         private System.Windows.Forms.Label lblInfo;
+        private Telerik.WinControls.UI.RadChartView radChartView1;
     }
 }

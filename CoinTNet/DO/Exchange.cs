@@ -46,6 +46,10 @@ namespace CoinTNet.DO
         /// Gets or sets a value indicating if the fee is deducted from in the total
         /// </summary>
         public bool FeeDeductedFromTotal { get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating if the exchange uses web sockets for data feed
+        /// </summary>
+        public bool UsesWebSocket { get; set; }
 
         public void AssignPairs(CurrencyPair[] pairs)
         {

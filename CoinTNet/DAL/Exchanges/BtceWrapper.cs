@@ -6,6 +6,7 @@ using CoinTNet.DO.Exchanges;
 using CoinTNet.DO.Security;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using DE = CoinTNet.DO.Exchanges;
 
 namespace CoinTNet.DAL.Exchanges
@@ -286,6 +287,15 @@ namespace CoinTNet.DAL.Exchanges
             }
         }
 
+        public async Task GetWebSocketTicker(CurrencyPair pair)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CloseCurrentWebsocket()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     /// <summary>

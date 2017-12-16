@@ -3,31 +3,33 @@ using CoinTNet.DO;
 using CoinTNet.DO.Exchanges;
 using CoinTNet.DO.Security;
 using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace CoinTNet.DAL.Exchanges
 {
     /// <summary>
-    /// Wrapper for the Bitstamp Proxy, to offer a unified interface
+    /// Wrapper for the GDAX Proxy, to offer a unified interface
     /// </summary>
-    class BitstampWrapper : Interfaces.IExchange
+    class GdaxWrapper : Interfaces.IExchange
     {
         #region private members
         /// <summary>
-        /// The Bitstamp proxy
+        /// The Gdax proxy
         /// </summary>
-        private BitstampAPI.BitstampProxy _proxy;
+        private GdaxAPI.GdaxProxy _proxy;
         #endregion
 
         /// <summary>
         /// Initialises a new instance of the class
         /// </summary>
-        public BitstampWrapper()
+        public GdaxWrapper()
         {
-            var p = SecureStorage.GetEncryptedData<BitstampAPIParams>(SecuredDataKeys.BitstampAPI);
+            var p = SecureStorage.GetEncryptedData<GdaxAPIParams>(SecuredDataKeys.GdaxAPI);
             NameValueCollection section = (NameValueCollection)ConfigurationManager.GetSection("CoinTNet");
             string baseUrl = string.Empty;
             if (section != null && section.Count > 0)
@@ -35,13 +37,14 @@ namespace CoinTNet.DAL.Exchanges
                 baseUrl = section["gdax.APIBaseUrl"];
             }
 
-            _proxy = new BitstampAPI.BitstampProxy(baseUrl, p.ClientID, p.APIKey, p.APISecret);
+            //_proxy = new GdaxAPI.GdaxProxy(baseUrl, p.Passphrase, p.APIKey, p.APISecret);
+            _proxy = new GdaxAPI.GdaxProxy(baseUrl, "9374m4iq6t", "75b85e46f7c505b4f85c400c2033e170", "gNrtMofMDfuxHS167uWl8fiWpq1/ZYMuTtLK82MF22TJFfFO9FOcKKyeZ1BaGqNY3hYGMUeC0oK3KxaWi5c1vA==");
         }
 
         /// <summary>
         /// Gets a reference to the underlying proxy
         /// </summary>
-        public BitstampAPI.BitstampProxy BitstampProxy
+        public GdaxAPI.GdaxProxy GdaxProxy
         {
             get { return _proxy; }
         }
@@ -53,14 +56,19 @@ namespace CoinTNet.DAL.Exchanges
         /// <returns>The ticker</returns>
         public CallResult<Ticker> GetTicker(CurrencyPair pair)
         {
-            return CallProxy(() => _proxy.GetTicker(), t => new Ticker
+            return CallProxy(() => _proxy.GetTicker(), t => t != null ? new Ticker
             {
                 Ask = t.Ask,
                 Bid = t.Bid,
                 High = t.High,
                 Low = t.Low,
                 Last = t.Last
-            });
+            } : new Ticker());
+        }
+
+        public async Task GetWebSocketTicker(CurrencyPair pair)
+        {
+            await _proxy.GetWebSocketTicker($"{pair.Item1}-{pair.Item2}");
         }
 
         /// <summary>
@@ -152,17 +160,7 @@ namespace CoinTNet.DAL.Exchanges
             return CallProxy(() => _proxy.GetOrderBook(),
                 o => new OrderBook
                 {
-                    Asks = o.Asks.Select(a => new SimpleOrderInfo
-                    {
-                        Amount = a.Amount,
-                        Price = a.Price
-                    }).ToList(),
-
-                    Bids = o.Bids.Select(b => new SimpleOrderInfo
-                    {
-                        Amount = b.Amount,
-                        Price = b.Price
-                    }).ToList(),
+                    Asks = new List<SimpleOrderInfo>()
                 }
                 );
         }
@@ -219,7 +217,7 @@ namespace CoinTNet.DAL.Exchanges
         /// <returns>A list of currency pairs</returns>
         public CallResult<CurrencyPair[]> GetCurrencyPairs()
         {
-            var p = new[] { new CurrencyPair("BTC", "USD") };
+            var p = new[] { new CurrencyPair("BTC", "USD"), new CurrencyPair("ETH", "USD"), new CurrencyPair("LTC", "USD") };
             return new CallResult<CurrencyPair[]>(p);
         }
 
@@ -241,7 +239,7 @@ namespace CoinTNet.DAL.Exchanges
         /// <param name="dataRetrievalFunc"></param>
         /// <param name="convFunc"></param>
         /// <returns></returns>
-        private CallResult<T> CallProxy<T, T2>(Func<BitstampAPI.CallResult<T2>> dataRetrievalFunc, Func<T2, T> convFunc)
+        private CallResult<T> CallProxy<T, T2>(Func<GdaxAPI.CallResult<T2>> dataRetrievalFunc, Func<T2, T> convFunc)
         {
             var callRes = dataRetrievalFunc();
             if (callRes.Success)
@@ -251,14 +249,19 @@ namespace CoinTNet.DAL.Exchanges
             return new CallResult<T>(callRes.ErrorMessage) { Exception = callRes.Exception, ErrorCode = callRes.ErrorCode };
         }
 
-        public async Task GetWebSocketTicker(CurrencyPair pair)
-        {
-            throw new NotImplementedException();
-        }
-
         public void CloseCurrentWebsocket()
         {
-            throw new NotImplementedException();
+            _proxy.CloseCurrentWebsocket();
         }
+
+        //private CallResult CallProxy<T, T2>(Func<GdaxAPI.CallResult<T2>> dataRetrievalFunc, Func<T2, T> convFunc)
+        //{
+        //    var callRes = dataRetrievalFunc();
+        //    if (callRes.Success)
+        //    {
+        //        return new CallResult(convFunc(callRes.Result));
+        //    }
+        //    return new CallResult(callRes.ErrorMessage) { Exception = callRes.Exception, ErrorCode = callRes.ErrorCode };
+        //}
     }
 }

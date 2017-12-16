@@ -1,5 +1,6 @@
 ﻿using CoinTNet.DO;
 using CoinTNet.DO.Exchanges;
+using System.Threading.Tasks;
 
 namespace CoinTNet.DAL.Interfaces
 {
@@ -14,6 +15,16 @@ namespace CoinTNet.DAL.Interfaces
         /// <param name="pair">The currency pair</param>
         /// <returns>The ticker</returns>
         CallResult<Ticker> GetTicker(CurrencyPair pair);
+        /// <summary>
+        /// Opens the current web socket feed
+        /// </summary>
+        /// <param name="pair"></param>
+        /// <returns></returns>
+        Task GetWebSocketTicker(CurrencyPair pair);
+        /// <summary>
+        /// Closes the current web socket feed
+        /// </summary>
+        void CloseCurrentWebsocket();
         /// <summary>
         /// Gets the balance for a given currency pair
         /// </summary>

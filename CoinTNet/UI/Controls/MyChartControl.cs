@@ -10,6 +10,8 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using Telerik.WinControls;
+using Telerik.WinControls.UI;
 
 namespace CoinTNet.UI.Controls
 {
@@ -26,10 +28,12 @@ namespace CoinTNet.UI.Controls
 
         private Stack<RectangleF> _zoomPositions = new Stack<RectangleF>();
 
-        private ChartArea _mainChartArea;
+        private System.Windows.Forms.DataVisualization.Charting.ChartArea _mainChartArea;
         private IList<OHLC> _candles;
 
         private IndicatorOptions _indicatorOptions;
+
+        private List<SalesRevenue> collection1, collection2;
         #endregion
 
 
@@ -39,6 +43,11 @@ namespace CoinTNet.UI.Controls
         public MyChartControl()
         {
             InitializeComponent();
+            InitializeData();
+            GenerateSeries("Line");
+
+
+            //this.SelectedControl = this.radChartView1;
             _candles = new List<OHLC>();
             _mainChartArea = chartCtrl.ChartAreas[Constants.CandleAreaName];
 
@@ -63,6 +72,86 @@ namespace CoinTNet.UI.Controls
 
             InitChart();
         }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            ((CartesianArea)this.radChartView1.View.Area).ShowGrid = true;
+
+            int i = 1;
+            foreach (DataPointElement dpe in this.radChartView1.Series[0].Children)
+            {
+                dpe.IsVisible = false;
+                AnimatedPropertySetting setting = new AnimatedPropertySetting();
+                setting.StartValue = false;
+                setting.EndValue = true;
+                setting.Property = UIChartElement.IsVisibleProperty;
+                setting.ApplyDelay = 40 + 40 * i;
+                setting.NumFrames = 2;
+                setting.ApplyValue(dpe);
+                i++;
+            }
+
+            i = 1;
+            foreach (DataPointElement dpe in this.radChartView1.Series[1].Children)
+            {
+                dpe.IsVisible = false;
+                AnimatedPropertySetting setting = new AnimatedPropertySetting();
+                setting.StartValue = false;
+                setting.EndValue = true;
+                setting.Property = UIChartElement.IsVisibleProperty;
+                setting.ApplyDelay = 60 + 60 * i;
+                setting.NumFrames = 2;
+                setting.ApplyValue(dpe);
+                i++;
+            }
+
+            CartesianArea area = this.radChartView1.GetArea<CartesianArea>();
+            area.ShowGrid = true;
+            CartesianGrid grid = area.GetGrid<CartesianGrid>();
+            grid.DrawHorizontalStripes = true;
+            grid.DrawVerticalStripes = true;
+        }
+
+        private void GenerateSeries(string seriesType)
+        {
+            CategoricalAxis horizontalAxis = new CategoricalAxis();
+            LinearAxis verticalAxis = new LinearAxis();
+            verticalAxis.AxisType = Telerik.Charting.AxisType.Second;
+
+            for (int i = 0; i < 2; i++)
+            {
+                CartesianSeries series = null;
+
+                if (seriesType == "Area")
+                {
+                    series = new AreaSeries();
+                }
+                else if (seriesType == "Line")
+                {
+                    series = new LineSeries();
+                }
+                else if (seriesType == "Stepline")
+                {
+                    series = new SteplineSeries();
+                }
+
+                series.PointSize = new SizeF(5, 5);
+                series.HorizontalAxis = horizontalAxis;
+                series.VerticalAxis = verticalAxis;
+                series.BorderWidth = 2;
+                series.CategoryMember = "Month";
+                series.ValueMember = "Revenue";
+                series.DataSource = i == 0 ? collection1 : collection2;
+                //series.ShowLabels = showLabels;
+                //series.CombineMode = selectedCombineMode;
+
+                this.radChartView1.ThemeName = "VisualStudio2012Dark";
+                this.radChartView1.Series.Add(series);
+            }
+        }
+
         /// <summary>
         /// Notifies the control that a simulation finished
         /// </summary>
@@ -327,7 +416,7 @@ namespace CoinTNet.UI.Controls
         /// <param name="serieName"></param>
         public void DrawChart(IList<OHLC> candles, string serieName)
         {
-            if(this.chartCtrl.IsDisposed)
+            if (this.chartCtrl.IsDisposed)
             {
                 return;
             }
@@ -609,5 +698,50 @@ namespace CoinTNet.UI.Controls
 
         }
         #endregion
+
+        #region Kendo Chart
+
+        private void InitializeData()
+        {
+            this.collection1 = new System.Collections.Generic.List<SalesRevenue>();
+            this.collection1.Add(new SalesRevenue("January", 3.5));
+            this.collection1.Add(new SalesRevenue("February", 2.8));
+            this.collection1.Add(new SalesRevenue("March", 3.4));
+            this.collection1.Add(new SalesRevenue("April", 3.2));
+            this.collection1.Add(new SalesRevenue("May", 3.4));
+            this.collection1.Add(new SalesRevenue("June", 3.7));
+            this.collection1.Add(new SalesRevenue("July", 3.1));
+            this.collection1.Add(new SalesRevenue("August", 2.9));
+            this.collection1.Add(new SalesRevenue("September", 3.3));
+            this.collection1.Add(new SalesRevenue("October", 3.1));
+            this.collection1.Add(new SalesRevenue("November", 3.6));
+            this.collection1.Add(new SalesRevenue("December", 3.7));
+            this.collection2 = new System.Collections.Generic.List<SalesRevenue>();
+            this.collection2.Add(new SalesRevenue("January", 1.5));
+            this.collection2.Add(new SalesRevenue("February", 1.7));
+            this.collection2.Add(new SalesRevenue("March", 1.4));
+            this.collection2.Add(new SalesRevenue("April", 1.6));
+            this.collection2.Add(new SalesRevenue("May", 1.8));
+            this.collection2.Add(new SalesRevenue("June", 1.5));
+            this.collection2.Add(new SalesRevenue("July", 1.5));
+            this.collection2.Add(new SalesRevenue("August", 1.7));
+            this.collection2.Add(new SalesRevenue("September", 2.1));
+            this.collection2.Add(new SalesRevenue("October", 1.6));
+            this.collection2.Add(new SalesRevenue("November", 2));
+            this.collection2.Add(new SalesRevenue("December", 1.6));
+
+        }
+
+        #endregion
+
+        public class SalesRevenue {
+            public SalesRevenue(string month, double value) {
+                Month = month;
+                Revenue = value;
+            }
+
+            public string Month { get; set; }
+            public double Revenue { get; set; }
+        }
     }
 }

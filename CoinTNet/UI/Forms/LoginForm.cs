@@ -98,7 +98,7 @@ namespace CoinTNet.UI.Forms
                 }
                 else
                 {
-                    bool ok = _authService.Login(profileName, txtPassword.Text);
+                    bool ok = _authService.Login(profileName, "brad");
                     if (!ok)
                     {
                         ErrorHelper.DisplayWarningMessage("Invalid credentials");

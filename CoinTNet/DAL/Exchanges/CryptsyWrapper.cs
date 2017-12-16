@@ -7,6 +7,7 @@ using System;
 using System.Collections.Specialized;
 using System.Configuration;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace CoinTNet.DAL.Exchanges
 {
@@ -280,6 +281,16 @@ namespace CoinTNet.DAL.Exchanges
                 Logger.Log(e, "Exception after calling Cryptsy's proxy");
                 return new CallResult<T>(e.Message) { Exception = e };
             }
+        }
+
+        public async Task GetWebSocketTicker(CurrencyPair pair)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CloseCurrentWebsocket()
+        {
+            throw new NotImplementedException();
         }
     }
 

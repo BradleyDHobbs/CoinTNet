@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Telerik.WinControls;
 
 namespace CoinTNet.UI.Forms
 {
@@ -51,6 +52,7 @@ namespace CoinTNet.UI.Forms
         public MainForm()
         {
             InitializeComponent();
+            ThemeResolutionService.ApplicationThemeName = "VisualStudio2012Dark";
             this.Text = CoinTNet.Common.Constants.ApplicationConstants.ApplicationName;
             EventAggregator.Instance.Subscribe<StatusUpdateMessage>(m => UpdateStatus(m.Message));
             //   this.Shown += (s, e) => OnBtnRefreshClick();
@@ -292,7 +294,7 @@ namespace CoinTNet.UI.Forms
                 of.ShowDialog();
             }
         }
-
+        
     }
 
 }

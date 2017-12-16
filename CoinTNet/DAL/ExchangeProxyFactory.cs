@@ -38,6 +38,10 @@ namespace CoinTNet.DAL
                 {
                     ret = new CryptsyWrapper();
                 }
+                else if (exchangeCode == ExchangesInternalCodes.Gdax)
+                {
+                    ret = new GdaxWrapper();
+                }
                 else
                 {
                     throw new ArgumentException("Unknown exchange code " + exchangeCode);

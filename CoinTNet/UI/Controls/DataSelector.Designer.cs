@@ -56,7 +56,7 @@
             this.btnRefreshCandles.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnRefreshCandles.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRefreshCandles.Image = global::CoinTNet.Properties.Resources.arrow_refresh;
-            this.btnRefreshCandles.Location = new System.Drawing.Point(447, 37);
+            this.btnRefreshCandles.Location = new System.Drawing.Point(503, 37);
             this.btnRefreshCandles.Name = "btnRefreshCandles";
             this.btnRefreshCandles.Size = new System.Drawing.Size(38, 22);
             this.btnRefreshCandles.TabIndex = 3;
@@ -69,9 +69,9 @@
             this.cbbPeriodInMin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbPeriodInMin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cbbPeriodInMin.FormattingEnabled = true;
-            this.cbbPeriodInMin.Location = new System.Drawing.Point(499, 5);
+            this.cbbPeriodInMin.Location = new System.Drawing.Point(565, 3);
             this.cbbPeriodInMin.Name = "cbbPeriodInMin";
-            this.cbbPeriodInMin.Size = new System.Drawing.Size(71, 21);
+            this.cbbPeriodInMin.Size = new System.Drawing.Size(71, 33);
             this.cbbPeriodInMin.TabIndex = 4;
             // 
             // label28
@@ -80,9 +80,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(447, 0);
+            this.label28.Location = new System.Drawing.Point(485, 0);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(38, 32);
+            this.label28.Size = new System.Drawing.Size(74, 32);
             this.label28.TabIndex = 25;
             this.label28.Text = "Period";
             this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -95,7 +95,7 @@
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(113, 32);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(40, 33);
+            this.label25.Size = new System.Drawing.Size(78, 33);
             this.label25.TabIndex = 20;
             this.label25.Text = "Pair";
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -108,7 +108,7 @@
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(113, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(40, 32);
+            this.label24.Size = new System.Drawing.Size(78, 32);
             this.label24.TabIndex = 1;
             this.label24.Text = "Market";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -119,7 +119,7 @@
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpTo.Location = new System.Drawing.Point(1, 4);
             this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(98, 20);
+            this.dtpTo.Size = new System.Drawing.Size(98, 31);
             this.dtpTo.TabIndex = 0;
             // 
             // label8
@@ -128,7 +128,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(249, 32);
+            this.label8.Location = new System.Drawing.Point(287, 32);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(37, 33);
             this.label8.TabIndex = 19;
@@ -141,7 +141,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(249, 0);
+            this.label7.Location = new System.Drawing.Point(287, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(37, 32);
             this.label7.TabIndex = 17;
@@ -156,18 +156,18 @@
             this.cbbExchange.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbExchange.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cbbExchange.FormattingEnabled = true;
-            this.cbbExchange.Location = new System.Drawing.Point(159, 3);
+            this.cbbExchange.Location = new System.Drawing.Point(197, 3);
             this.cbbExchange.Name = "cbbExchange";
-            this.cbbExchange.Size = new System.Drawing.Size(84, 21);
+            this.cbbExchange.Size = new System.Drawing.Size(84, 33);
             this.cbbExchange.TabIndex = 0;
             this.cbbExchange.SelectedIndexChanged += new System.EventHandler(this.cbbExchange_SelectedIndexChanged);
             // 
             // dtpFrom
             // 
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFrom.Location = new System.Drawing.Point(292, 3);
+            this.dtpFrom.Location = new System.Drawing.Point(330, 3);
             this.dtpFrom.Name = "dtpFrom";
-            this.dtpFrom.Size = new System.Drawing.Size(96, 20);
+            this.dtpFrom.Size = new System.Drawing.Size(96, 31);
             this.dtpFrom.TabIndex = 2;
             // 
             // cbbPairs
@@ -178,9 +178,9 @@
             this.cbbPairs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbPairs.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.cbbPairs.FormattingEnabled = true;
-            this.cbbPairs.Location = new System.Drawing.Point(159, 35);
+            this.cbbPairs.Location = new System.Drawing.Point(197, 35);
             this.cbbPairs.Name = "cbbPairs";
-            this.cbbPairs.Size = new System.Drawing.Size(84, 21);
+            this.cbbPairs.Size = new System.Drawing.Size(84, 33);
             this.cbbPairs.TabIndex = 1;
             this.cbbPairs.SelectedIndexChanged += new System.EventHandler(this.cbbPairs_SelectedIndexChanged);
             // 
@@ -201,7 +201,7 @@
             this.rdbUseAPI.Checked = true;
             this.rdbUseAPI.Location = new System.Drawing.Point(4, 7);
             this.rdbUseAPI.Name = "rdbUseAPI";
-            this.rdbUseAPI.Size = new System.Drawing.Size(64, 17);
+            this.rdbUseAPI.Size = new System.Drawing.Size(120, 29);
             this.rdbUseAPI.TabIndex = 0;
             this.rdbUseAPI.TabStop = true;
             this.rdbUseAPI.Text = "Use API";
@@ -224,7 +224,7 @@
             this.rdbLoadFile.AutoSize = true;
             this.rdbLoadFile.Location = new System.Drawing.Point(3, 39);
             this.rdbLoadFile.Name = "rdbLoadFile";
-            this.rdbLoadFile.Size = new System.Drawing.Size(65, 17);
+            this.rdbLoadFile.Size = new System.Drawing.Size(125, 29);
             this.rdbLoadFile.TabIndex = 1;
             this.rdbLoadFile.TabStop = true;
             this.rdbLoadFile.Text = "Load file";
@@ -264,7 +264,7 @@
             // 
             this.panel2.Controls.Add(this.chkNow);
             this.panel2.Controls.Add(this.dtpTo);
-            this.panel2.Location = new System.Drawing.Point(289, 32);
+            this.panel2.Location = new System.Drawing.Point(327, 32);
             this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(155, 30);
@@ -277,7 +277,7 @@
             this.chkNow.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkNow.Location = new System.Drawing.Point(105, 7);
             this.chkNow.Name = "chkNow";
-            this.chkNow.Size = new System.Drawing.Size(48, 17);
+            this.chkNow.Size = new System.Drawing.Size(86, 29);
             this.chkNow.TabIndex = 1;
             this.chkNow.Text = "Now";
             this.chkNow.UseVisualStyleBackColor = true;

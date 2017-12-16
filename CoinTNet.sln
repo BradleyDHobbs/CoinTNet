@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Windows Desktop
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinTNet", "CoinTNet\CoinTNet.csproj", "{B32D3CC7-AD42-45AA-937C-87C417859F56}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitcoinWisdomAPI", "libraries\BitcoinWisdomAPI\BitcoinWisdomAPI.csproj", "{FF55A6D7-3D49-48D7-9E0C-441F8FD6BBF9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptsyAPI", "libraries\CryptsyAPI\CryptsyAPI.csproj", "{03D872C9-959E-41B6-BFA1-37D30F5E2994}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GdaxAPI", "GdaxAPI\GdaxAPI.csproj", "{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -183,6 +185,38 @@ Global
 		{03D872C9-959E-41B6-BFA1-37D30F5E2994}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{03D872C9-959E-41B6-BFA1-37D30F5E2994}.Release|Win32.ActiveCfg = Release|Any CPU
 		{03D872C9-959E-41B6-BFA1-37D30F5E2994}.Release|X64.ActiveCfg = Release|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Debug SubArray|Any CPU.ActiveCfg = Debug|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Debug SubArray|Any CPU.Build.0 = Debug|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Debug SubArray|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Debug SubArray|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Debug SubArray|Win32.ActiveCfg = Debug|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Debug SubArray|Win32.Build.0 = Debug|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Debug SubArray|X64.ActiveCfg = Debug|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Debug SubArray|X64.Build.0 = Debug|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Debug|Win32.Build.0 = Debug|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Debug|X64.ActiveCfg = Debug|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Debug|X64.Build.0 = Debug|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Release SubArray|Any CPU.ActiveCfg = Release|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Release SubArray|Any CPU.Build.0 = Release|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Release SubArray|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Release SubArray|Mixed Platforms.Build.0 = Release|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Release SubArray|Win32.ActiveCfg = Release|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Release SubArray|Win32.Build.0 = Release|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Release SubArray|X64.ActiveCfg = Release|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Release SubArray|X64.Build.0 = Release|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Release|Win32.ActiveCfg = Release|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Release|Win32.Build.0 = Release|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Release|X64.ActiveCfg = Release|Any CPU
+		{0313CCFF-A54F-4ABE-BB43-6A91F2A5DA52}.Release|X64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
